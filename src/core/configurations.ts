@@ -13,7 +13,7 @@ export default class Configurations {
       logoUrl: process.env.APP_LOGO_URL,
     };
     this.FEATURE_FLAGS = {
-      isNotValidatingMail: process.env.NOT_VALIDATING_MAIL,
+      isValidatingMail: Boolean(process.env.IS_VALIDATING_MAIL),
     };
     this.FIREBASE = {
       apiKey: process.env.FIREBASE_APIKEY,

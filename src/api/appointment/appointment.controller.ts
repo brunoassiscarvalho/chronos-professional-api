@@ -101,7 +101,13 @@ export default class AppointmentController {
   public async patchPatientAppointment(
     req: Request,
     res: Response
-  ): Promise<IAppointment> {
+  ): Promise<
+    ReturnType<(typeof Appointment)["findOneAndUpdate"]> extends Promise<
+      infer T
+    >
+      ? T
+      : any
+  > {
     const { _id } = req.body;
     const { name, picture, user_id, email } = res.locals;
     try {

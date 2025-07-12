@@ -10,7 +10,7 @@ import { decodePassAuthorization } from "../../util/Utils";
 import Professional, { IProfessional } from "../professional/professional";
 
 export default class LoginController {
-  private configurations = new Configurations();
+  private readonly configurations = new Configurations();
   public async login(req: Request): Promise<any> {
     const { email, password } = decodePassAuthorization(req.headers);
     let userLogged: UserCredential;
@@ -23,9 +23,13 @@ export default class LoginController {
         err
       );
     }
-
+    console.log(
+      userLogged.user.email,
+      this.configurations.FEATURE_FLAGS.isValidatingMail &&
+      !userLogged.user?.emailVerified
+    );
     if (
-      !this.configurations.FEATURE_FLAGS.isNotValidatingMail &&
+      this.configurations.FEATURE_FLAGS.isValidatingMail &&
       !userLogged.user?.emailVerified
     ) {
       throw new UnauthorizedException(
@@ -39,6 +43,7 @@ export default class LoginController {
       professional = await Professional.findOne({
         email: userLogged.user.email,
       });
+      console.log(professional);
       if (!professional)
         throw new UnauthorizedException("Cadastro não localizado", "LOGIN003");
     } catch (error) {
