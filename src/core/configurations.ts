@@ -9,7 +9,7 @@ export default class Configurations {
 
   constructor() {
     this.APP = {
-      name: process.env.APP_NAME || "Defina um nome para a aplicação",
+      name: process.env.APP_NAME || 'Defina um nome para a aplicação',
       logoUrl: process.env.APP_LOGO_URL,
     };
     this.FEATURE_FLAGS = {
@@ -27,13 +27,13 @@ export default class Configurations {
     };
 
     this.EMAIL = { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS };
-    this.MONGO = process.env.MONGO_DB_URI || "";
+    this.MONGO = process.env.MONGO_DB_URI || '';
 
     this.FIREBASE_ACCOUNT = {
       type: process.env.FIREBASE_TYPE,
       project_id: process.env.FIREBASE_PROJECT_ID,
       private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
-      private_key: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+      private_key: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
       client_email: process.env.FIREBASE_CLIENT_EMAIL,
       client_id: process.env.FIREBASE_CLIENT_ID,
       auth_uri: process.env.FIREBASE_AUTH_URI,
@@ -42,6 +42,6 @@ export default class Configurations {
         process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
       client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL,
     };
-    this.CLIENTS = process.env.CLIENTS?.split(" ") || [""];
+    this.CLIENTS = process.env.CLIENTS?.split(' ') || [''];
   }
 }

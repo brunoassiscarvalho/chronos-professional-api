@@ -1,8 +1,8 @@
-import { Request, Response, NextFunction, Application } from "express";
-import LoginController from "./login.controller";
+import { Request, Response, NextFunction, Application } from 'express';
+import LoginController from './login.controller';
 
 export class LoginApi {
-  private readonly defaultPath = "/login";
+  private readonly defaultPath = '/login';
 
   public readonly authController: LoginController = new LoginController();
 
@@ -17,7 +17,7 @@ export class LoginApi {
             next();
           })
           .catch((e) => next(e));
-      }
+      },
     );
   }
 }
